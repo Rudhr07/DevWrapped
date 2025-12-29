@@ -18,6 +18,18 @@ const Create = () => {
   const [formData, setFormData] = useState<WrapData>(defaultWrapData);
 
   useEffect(() => {
+    // First check if there's existing wrap data (user coming back to edit)
+    const existingWrapData = sessionStorage.getItem('wrapData');
+    if (existingWrapData) {
+      try {
+        setFormData(JSON.parse(existingWrapData));
+        return; // Skip period data loading if we have full wrap data
+      } catch {
+        // If parsing fails, continue with default behavior
+      }
+    }
+
+    // Otherwise, check for period selection data
     const periodData = sessionStorage.getItem('wrapPeriod');
     if (periodData) {
       const { periodType, year, month } = JSON.parse(periodData);
