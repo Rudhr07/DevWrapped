@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 20% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 20% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 142 70% 45%;
+    --primary-foreground: 220 20% 4%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 15% 12%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 142 70% 45%;
+    --accent-foreground: 220 20% 4%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 142 70% 45%;
+
+    --radius: 0.75rem;
+
+    /* Personality Theme Variables */
+    --theme-primary: 142 70% 45%;
+    --theme-secondary: 142 70% 35%;
+    --theme-glow: 142 70% 50%;
+    --theme-bg-start: 220 20% 4%;
+    --theme-bg-end: 220 25% 8%;
+
+    /* Gradient definitions */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--theme-primary)), hsl(var(--theme-secondary)));
+    --gradient-bg: linear-gradient(180deg, hsl(var(--theme-bg-start)), hsl(var(--theme-bg-end)));
+    --gradient-hero: radial-gradient(ellipse at center, hsl(var(--theme-primary) / 0.15) 0%, transparent 70%);
+
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(var(--theme-primary) / 0.3);
+    --shadow-card: 0 8px 32px hsl(220 20% 2% / 0.5);
+
+    /* Sidebar defaults */
+    --sidebar-background: 220 20% 6%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 142 70% 45%;
+    --sidebar-primary-foreground: 220 20% 4%;
+    --sidebar-accent: 220 15% 12%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 142 70% 45%;
+  }
+
+  /* Batman Theme - Default */
+  .theme-batman {
+    --theme-primary: 142 70% 45%;
+    --theme-secondary: 142 60% 35%;
+    --theme-glow: 142 80% 55%;
+    --theme-bg-start: 220 20% 4%;
+    --theme-bg-end: 220 30% 6%;
+    --primary: 142 70% 45%;
+    --accent: 142 70% 45%;
+    --ring: 142 70% 45%;
+  }
+
+  /* Iron Man Theme */
+  .theme-ironman {
+    --theme-primary: 15 90% 55%;
+    --theme-secondary: 45 100% 50%;
+    --theme-glow: 15 100% 60%;
+    --theme-bg-start: 15 30% 6%;
+    --theme-bg-end: 30 25% 8%;
+    --primary: 15 90% 55%;
+    --accent: 45 100% 50%;
+    --ring: 15 90% 55%;
+  }
+
+  /* Cyberpunk Theme */
+  .theme-cyberpunk {
+    --theme-primary: 280 100% 65%;
+    --theme-secondary: 195 100% 50%;
+    --theme-glow: 280 100% 70%;
+    --theme-bg-start: 260 30% 5%;
+    --theme-bg-end: 280 40% 8%;
+    --primary: 280 100% 65%;
+    --accent: 195 100% 50%;
+    --ring: 280 100% 65%;
+  }
+
+  /* Minimalist Theme */
+  .theme-minimalist {
+    --theme-primary: 0 0% 90%;
+    --theme-secondary: 0 0% 70%;
+    --theme-glow: 0 0% 95%;
+    --theme-bg-start: 0 0% 5%;
+    --theme-bg-end: 0 0% 8%;
+    --primary: 0 0% 90%;
+    --accent: 0 0% 70%;
+    --ring: 0 0% 90%;
+  }
+
+  /* Hacker Theme */
+  .theme-hacker {
+    --theme-primary: 120 100% 40%;
+    --theme-secondary: 120 80% 30%;
+    --theme-glow: 120 100% 50%;
+    --theme-bg-start: 120 50% 2%;
+    --theme-bg-end: 120 40% 4%;
+    --primary: 120 100% 40%;
+    --accent: 120 100% 40%;
+    --ring: 120 100% 40%;
+  }
+
+  /* Space Theme */
+  .theme-space {
+    --theme-primary: 220 100% 65%;
+    --theme-secondary: 260 80% 55%;
+    --theme-glow: 220 100% 70%;
+    --theme-bg-start: 240 50% 4%;
+    --theme-bg-end: 260 40% 8%;
+    --primary: 220 100% 65%;
+    --accent: 260 80% 55%;
+    --ring: 220 100% 65%;
+  }
+
+  /* Anime Theme */
+  .theme-anime {
+    --theme-primary: 330 100% 65%;
+    --theme-secondary: 280 100% 60%;
+    --theme-glow: 330 100% 70%;
+    --theme-bg-start: 320 40% 5%;
+    --theme-bg-end: 280 35% 8%;
+    --primary: 330 100% 65%;
+    --accent: 280 100% 60%;
+    --ring: 330 100% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Orbitron', sans-serif;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--theme-primary)), hsl(var(--theme-secondary)));
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px hsl(var(--theme-primary) / 0.5),
+                 0 0 40px hsl(var(--theme-primary) / 0.3);
+  }
+
+  .glow-box {
+    box-shadow: 0 0 30px hsl(var(--theme-primary) / 0.2),
+                inset 0 0 30px hsl(var(--theme-primary) / 0.05);
+  }
+
+  .stat-number {
+    font-family: 'Orbitron', sans-serif;
+    @apply text-5xl md:text-6xl font-bold tracking-tight;
+    color: hsl(var(--theme-primary));
+    text-shadow: 0 0 30px hsl(var(--theme-primary) / 0.5);
+  }
+
+  .stat-label {
+    @apply text-xs uppercase tracking-widest;
+    color: hsl(var(--theme-primary) / 0.8);
+  }
+
+  .wrap-card {
+    background: linear-gradient(180deg, hsl(var(--theme-bg-start)), hsl(var(--theme-bg-end)));
+    @apply relative overflow-hidden;
+  }
+
+  .wrap-card::before {
+    content: '';
+    @apply absolute inset-0;
+    background: radial-gradient(ellipse at 50% 30%, hsl(var(--theme-primary) / 0.1) 0%, transparent 60%);
+  }
+
+  .hero-gradient {
+    background: radial-gradient(ellipse at 50% 0%, hsl(var(--theme-primary) / 0.15) 0%, transparent 50%),
+                linear-gradient(180deg, hsl(var(--theme-bg-start)), hsl(var(--theme-bg-end)));
+  }
+
+  .card-glass {
+    @apply bg-card/50 backdrop-blur-xl border border-border/50 rounded-xl;
+  }
+
+  .input-field {
+    @apply bg-muted/50 border border-border/50 rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-lg transition-all;
+    box-shadow: 0 0 20px hsl(var(--theme-primary) / 0.3);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 30px hsl(var(--theme-primary) / 0.5);
+    transform: translateY(-2px);
+  }
+}
+
+@layer utilities {
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+}
