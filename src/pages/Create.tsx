@@ -83,9 +83,7 @@ const Create = () => {
             Create Your{' '}
             <span 
               style={{ 
-                background: `linear-gradient(135deg, ${theme.primaryColor}, ${theme.secondaryColor})`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+                color: theme.primaryColor,
               }}
             >
               Wrap
