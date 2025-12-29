@@ -57,13 +57,13 @@ export const WrapCard = forwardRef<HTMLDivElement, WrapCardProps>(({ data }, ref
   return (
     <div 
       ref={ref}
-      className={`relative w-full max-w-[400px] mx-auto aspect-[9/16] rounded-2xl overflow-hidden ${themeClass}`}
+      className={`relative w-full max-w-[540px] mx-auto aspect-[9/16] rounded-2xl overflow-hidden ${themeClass}`}
       style={{ background: theme.gradient }}
     >
       {/* Background Image */}
       {bgImage && (
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
           style={{ 
             backgroundImage: `url(${bgImage})`,
           }}
@@ -72,23 +72,23 @@ export const WrapCard = forwardRef<HTMLDivElement, WrapCardProps>(({ data }, ref
       
       {/* Overlay */}
       <div 
-        className="absolute inset-0"
+        className="absolute inset-0 z-[1]"
         style={{ backgroundColor: theme.bgOverlay }}
       />
       
       {/* Gradient overlay for depth */}
       <div 
-        className="absolute inset-0"
+        className="absolute inset-0 z-[2]"
         style={{ 
           background: `radial-gradient(ellipse at 50% 30%, ${theme.primaryColor}15 0%, transparent 60%)`
         }}
       />
 
       {/* Content */}
-      <div className="relative z-10 h-full p-6 flex flex-col">
+      <div className="relative z-[3] h-full p-6 flex flex-col justify-between">
         {/* Header */}
         <motion.div 
-          className="text-center mb-6"
+          className="text-center mb-4"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -102,10 +102,7 @@ export const WrapCard = forwardRef<HTMLDivElement, WrapCardProps>(({ data }, ref
           <h2 
             className="font-display text-4xl font-black tracking-tight"
             style={{ 
-              background: `linear-gradient(135deg, ${theme.primaryColor}, ${theme.secondaryColor})`,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              textShadow: `0 0 40px ${theme.primaryColor}50`
+              color: theme.primaryColor
             }}
           >
             WRAP<span className="text-xl align-top ml-1">{data.year}</span>
@@ -122,7 +119,7 @@ export const WrapCard = forwardRef<HTMLDivElement, WrapCardProps>(({ data }, ref
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 gap-4 flex-1">
+        <div className="grid grid-cols-2 gap-3 mb-4">
           <StatItem icon={Code2} label="LINES OF CODE" value={data.linesOfCode} delay={0.1} themeColor={theme.primaryColor} />
           <StatItem icon={GitCommit} label="COMMITS" value={data.commits} delay={0.2} themeColor={theme.primaryColor} />
           <StatItem icon={Coffee} label="COFFEES CONSUMED" value={data.coffeesConsumed} suffix="+" delay={0.3} themeColor={theme.primaryColor} />
@@ -135,7 +132,7 @@ export const WrapCard = forwardRef<HTMLDivElement, WrapCardProps>(({ data }, ref
 
         {/* Apps & Languages */}
         <motion.div 
-          className="mt-4 space-y-3"
+          className="space-y-2 mb-3"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9 }}
@@ -186,7 +183,7 @@ export const WrapCard = forwardRef<HTMLDivElement, WrapCardProps>(({ data }, ref
 
         {/* Footer */}
         <motion.div 
-          className="mt-4 pt-4 flex justify-between items-end"
+          className="pt-3 flex justify-between items-end flex-shrink-0"
           style={{ borderTop: `1px solid ${theme.primaryColor}30` }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -212,9 +209,7 @@ export const WrapCard = forwardRef<HTMLDivElement, WrapCardProps>(({ data }, ref
             <p 
               className="font-display font-bold text-sm uppercase"
               style={{ 
-                background: `linear-gradient(135deg, ${theme.primaryColor}, ${theme.secondaryColor})`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+                color: theme.primaryColor
               }}
             >
               {data.personality}

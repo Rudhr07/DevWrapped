@@ -1,4 +1,4 @@
-# DevWrap - Software Engineer Wrap 2025
+# DevWrap - Software Engineer Wrap
 
 A year-in-review application for developers to showcase their coding journey, inspired by Spotify Wrapped.
 

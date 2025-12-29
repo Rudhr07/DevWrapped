@@ -93,36 +93,36 @@ const Wrap = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <motion.div 
-          className="flex items-center justify-between mb-8"
+          className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 relative z-50"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
         >
           <button 
             onClick={() => navigate('/create')}
-            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+            className="flex items-center gap-2 text-foreground hover:text-primary transition-colors font-medium"
           >
-            <ChevronLeft className="w-4 h-4" />
+            <ChevronLeft className="w-5 h-5" />
             Edit
           </button>
           <div className="flex gap-3">
             <motion.button
               onClick={handleShare}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-muted/50 text-foreground hover:bg-muted transition-all"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 transition-all border border-white/20 font-medium"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <Share2 className="w-4 h-4" />
-              Share
+              <span className="hidden sm:inline">Share</span>
             </motion.button>
             <motion.button
               onClick={handleDownload}
               disabled={isDownloading}
-              className="btn-primary flex items-center gap-2 disabled:opacity-50"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              className="btn-primary flex items-center gap-2 disabled:opacity-50 px-5 py-2.5 font-medium"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <Download className="w-4 h-4" />
-              {isDownloading ? 'Generating...' : 'Download PNG'}
+              {isDownloading ? 'Generating...' : 'Download'}
             </motion.button>
           </div>
         </motion.div>

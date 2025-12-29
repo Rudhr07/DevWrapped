@@ -82,7 +82,7 @@ const Landing = () => {
         >
           <span className="text-foreground">SOFTWARE ENGINEER</span>
           <br />
-          <span className="text-gradient glow-text">WRAP {new Date().getFullYear()}</span>
+          <span className="text-gradient glow-text">WRAP</span>
         </motion.h1>
 
         <motion.p
