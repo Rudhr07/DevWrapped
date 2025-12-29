@@ -20,38 +20,38 @@ export const WrapCard = forwardRef<HTMLDivElement, WrapCardProps>(({ data }, ref
 
   const getLanguageIcon = (lang: string) => {
     const icons: Record<string, string> = {
-      'JavaScript': '🟨',
-      'TypeScript': '💙',
-      'Python': '🐍',
-      'Java': '☕',
-      'Go': '🐹',
-      'Rust': '🦀',
-      'C++': '⚡',
-      'C#': '💜',
-      'Ruby': '💎',
-      'PHP': '🐘',
-      'Swift': '🍎',
-      'Kotlin': '🟣',
+      'JavaScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+      'TypeScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+      'Python': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+      'Java': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
+      'Go': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg',
+      'Rust': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg',
+      'C++': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
+      'C#': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg',
+      'Ruby': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg',
+      'PHP': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
+      'Swift': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg',
+      'Kotlin': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg',
     };
-    return icons[lang] || '📝';
+    return icons[lang] || 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/devicon/devicon-original.svg';
   };
 
   const getAppIcon = (app: string) => {
     const icons: Record<string, string> = {
-      'VS Code': '💻',
-      'Slack': '💬',
-      'GitHub': '🐙',
-      'GitLab': '🦊',
-      'Jira': '📋',
-      'Notion': '📝',
-      'Figma': '🎨',
-      'Discord': '🎮',
-      'Teams': '👥',
-      'Terminal': '⬛',
-      'Docker': '🐳',
-      'Postman': '📮',
+      'VS Code': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',
+      'Slack': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg',
+      'GitHub': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
+      'GitLab': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg',
+      'Jira': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg',
+      'Notion': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/notion/notion-original.svg',
+      'Figma': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
+      'Discord': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/discord/discord-original.svg',
+      'Teams': 'https://www.svgrepo.com/show/373952/teams.svg',
+      'Terminal': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg',
+      'Docker': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
+      'Postman': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg',
     };
-    return icons[app] || '📱';
+    return icons[app] || 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/devicon/devicon-original.svg';
   };
 
   return (
@@ -107,15 +107,25 @@ export const WrapCard = forwardRef<HTMLDivElement, WrapCardProps>(({ data }, ref
           >
             WRAP<span className="text-xl align-top ml-1">{data.year}</span>
           </h2>
-          <p 
-            className="text-sm mt-2 italic opacity-70"
-            style={{ color: theme.primaryColor }}
-          >
-            {data.periodType === 'monthly' && data.month 
-              ? new Date(data.year, data.month - 1).toLocaleDateString('en-US', { month: 'long' })
-              : 'Code, Coffee, and Deploys'
-            }
-          </p>
+          {data.periodType === 'monthly' && data.month ? (
+            <p 
+              className="font-display text-5xl font-black mt-3 uppercase tracking-wide"
+              style={{ 
+                color: theme.secondaryColor,
+                textShadow: `0 0 30px ${theme.secondaryColor}, 0 0 60px ${theme.secondaryColor}80, 0 4px 10px rgba(0,0,0,0.5)`,
+                letterSpacing: '0.1em'
+              }}
+            >
+              {new Date(data.year, data.month - 1).toLocaleDateString('en-US', { month: 'long' })}
+            </p>
+          ) : (
+            <p 
+              className="text-sm mt-2 italic opacity-70"
+              style={{ color: theme.primaryColor }}
+            >
+              Code, Coffee, and Deploys
+            </p>
+          )}
         </motion.div>
 
         {/* Stats Grid */}
@@ -144,17 +154,23 @@ export const WrapCard = forwardRef<HTMLDivElement, WrapCardProps>(({ data }, ref
             >
               MOST USED APPS
             </span>
-            <div className="flex justify-center gap-3 text-2xl">
+            <div className="flex justify-center gap-4 items-center">
               {data.mostUsedApps.slice(0, 3).map((app, i) => (
-                <motion.span 
+                <motion.div
                   key={app}
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 1 + i * 0.1 }}
                   title={app}
+                  className="w-10 h-10 flex items-center justify-center"
                 >
-                  {getAppIcon(app)}
-                </motion.span>
+                  <img 
+                    src={getAppIcon(app)} 
+                    alt={app}
+                    className="w-full h-full object-contain"
+                    style={{ filter: 'brightness(1.2)' }}
+                  />
+                </motion.div>
               ))}
             </div>
           </div>
@@ -165,17 +181,23 @@ export const WrapCard = forwardRef<HTMLDivElement, WrapCardProps>(({ data }, ref
             >
               MOST USED LANGUAGES
             </span>
-            <div className="flex justify-center gap-3 text-2xl">
+            <div className="flex justify-center gap-4 items-center">
               {data.mostUsedLanguages.slice(0, 3).map((lang, i) => (
-                <motion.span 
+                <motion.div
                   key={lang}
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 1.2 + i * 0.1 }}
                   title={lang}
+                  className="w-10 h-10 flex items-center justify-center"
                 >
-                  {getLanguageIcon(lang)}
-                </motion.span>
+                  <img 
+                    src={getLanguageIcon(lang)} 
+                    alt={lang}
+                    className="w-full h-full object-contain"
+                    style={{ filter: 'brightness(1.2)' }}
+                  />
+                </motion.div>
               ))}
             </div>
           </div>

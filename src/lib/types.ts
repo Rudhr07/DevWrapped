@@ -5,7 +5,8 @@ export type Personality =
   | 'minimalist' 
   | 'hacker' 
   | 'space' 
-  | 'anime';
+  | 'anime'
+  | 'gta';
 
 export type WrapPeriodType = 'yearly' | 'monthly';
 
@@ -61,6 +62,7 @@ export const personalities: { id: Personality; name: string; description: string
   { id: 'hacker', name: 'Hacker', description: 'Matrix terminal', colors: 'Matrix Green' },
   { id: 'space', name: 'Space', description: 'Cosmic explorer', colors: 'Blue & Purple' },
   { id: 'anime', name: 'Anime', description: 'Kawaii vibes', colors: 'Pink & Purple' },
+  { id: 'gta', name: 'GTA', description: 'Street style', colors: 'Orange & Green' },
 ];
 
 export const ideOptions = [

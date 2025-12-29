@@ -23,44 +23,98 @@ export const PersonalitySelector = ({ selected, onSelect }: PersonalitySelectorP
               key={p.id}
               type="button"
               onClick={() => onSelect(p.id)}
-              className={`relative p-4 rounded-xl border transition-all text-left overflow-hidden ${
+              className={`relative p-0 rounded-xl border transition-all overflow-hidden ${
                 selected === p.id
-                  ? 'border-primary bg-primary/10'
-                  : 'border-border/50 bg-muted/30 hover:border-primary/50'
+                  ? 'border-primary ring-2 ring-primary'
+                  : 'border-border/50 hover:border-primary/50'
               }`}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               style={{
-                boxShadow: selected === p.id ? `0 0 20px ${theme.primaryColor}30` : 'none'
+                boxShadow: selected === p.id ? `0 0 20px ${theme.primaryColor}50` : 'none'
               }}
             >
-              {/* Color preview bar */}
+              {/* Mini preview card */}
               <div 
-                className="absolute top-0 left-0 right-0 h-1"
+                className="aspect-[9/16] relative"
                 style={{ 
-                  background: `linear-gradient(90deg, ${theme.primaryColor}, ${theme.secondaryColor})`
+                  background: theme.gradient
                 }}
-              />
-              
-              <span 
-                className="font-display font-bold text-sm block mb-1"
-                style={{ color: theme.primaryColor }}
               >
-                {p.name}
-              </span>
-              <span className="text-xs text-muted-foreground block">
-                {p.description}
-              </span>
-              <span 
-                className="text-xs mt-1 block"
-                style={{ color: theme.primaryColor, opacity: 0.7 }}
-              >
-                {p.colors}
-              </span>
+                {/* Background Image */}
+                {theme.defaultBgImage && (
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ 
+                      backgroundImage: `url(${theme.defaultBgImage})`
+                    }}
+                  />
+                )}
+                
+                {/* Background overlay */}
+                <div 
+                  className="absolute inset-0"
+                  style={{ backgroundColor: theme.bgOverlay }}
+                />
+                
+                {/* Gradient overlay */}
+                <div 
+                  className="absolute inset-0"
+                  style={{ 
+                    background: `radial-gradient(ellipse at 50% 30%, ${theme.primaryColor}20 0%, transparent 60%)`
+                  }}
+                />
+                
+                {/* Mini content */}
+                <div className="absolute inset-0 p-3 flex flex-col justify-between z-10">
+                  <div className="text-center">
+                    <div 
+                      className="text-[7px] font-bold tracking-wider mb-0.5"
+                      style={{ color: 'hsl(0, 0%, 98%)' }}
+                    >
+                      SOFTWARE ENGINEER
+                    </div>
+                    <div 
+                      className="text-xs font-black"
+                      style={{ color: theme.primaryColor }}
+                    >
+                      WRAP
+                    </div>
+                  </div>
+                  
+                  {/* Sample stats grid */}
+                  <div className="grid grid-cols-2 gap-1 mb-1">
+                    {[1, 2, 3, 4].map((i) => (
+                      <div 
+                        key={i}
+                        className="rounded p-1"
+                        style={{ 
+                          backgroundColor: `${theme.primaryColor}15`,
+                          border: `1px solid ${theme.primaryColor}40`
+                        }}
+                      >
+                        <div className="text-[6px] font-semibold" style={{ color: theme.primaryColor }}>
+                          {i === 1 ? '30k' : i === 2 ? '100' : i === 3 ? '400' : '1k'}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {/* Theme name at bottom */}
+                  <div className="text-center">
+                    <div 
+                      className="text-[9px] font-bold uppercase tracking-wide"
+                      style={{ color: theme.primaryColor }}
+                    >
+                      {p.name}
+                    </div>
+                  </div>
+                </div>
+              </div>
               
               {selected === p.id && (
                 <motion.div
-                  className="absolute top-2 right-2 w-5 h-5 rounded-full flex items-center justify-center"
+                  className="absolute top-2 right-2 w-5 h-5 rounded-full flex items-center justify-center z-10"
                   style={{ backgroundColor: theme.primaryColor }}
                   layoutId="selectedIndicator"
                   initial={{ scale: 0 }}
