@@ -107,7 +107,7 @@ const Create = () => {
                 </label>
                 <input
                   type="number"
-                  value={formData.linesOfCode}
+                  value={formData.linesOfCode || ''}
                   onChange={(e) => updateField('linesOfCode', e.target.value === '' ? 0 : parseInt(e.target.value))}
                   className="input-field w-full"
                   placeholder="30000"
@@ -119,7 +119,7 @@ const Create = () => {
                 </label>
                 <input
                   type="number"
-                  value={formData.commits}
+                  value={formData.commits || ''}
                   onChange={(e) => updateField('commits', e.target.value === '' ? 0 : parseInt(e.target.value))}
                   className="input-field w-full"
                   placeholder="100"
@@ -131,7 +131,7 @@ const Create = () => {
                 </label>
                 <input
                   type="number"
-                  value={formData.coffeesConsumed}
+                  value={formData.coffeesConsumed || ''}
                   onChange={(e) => updateField('coffeesConsumed', e.target.value === '' ? 0 : parseInt(e.target.value))}
                   className="input-field w-full"
                   placeholder="400"
@@ -143,7 +143,7 @@ const Create = () => {
                 </label>
                 <input
                   type="number"
-                  value={formData.hoursCoded}
+                  value={formData.hoursCoded || ''}
                   onChange={(e) => updateField('hoursCoded', e.target.value === '' ? 0 : parseInt(e.target.value))}
                   className="input-field w-full"
                   placeholder="1000"
@@ -155,7 +155,7 @@ const Create = () => {
                 </label>
                 <input
                   type="number"
-                  value={formData.bugsFixed}
+                  value={formData.bugsFixed || ''}
                   onChange={(e) => updateField('bugsFixed', e.target.value === '' ? 0 : parseInt(e.target.value))}
                   className="input-field w-full"
                   placeholder="150"
@@ -167,7 +167,7 @@ const Create = () => {
                 </label>
                 <input
                   type="number"
-                  value={formData.projectsShipped}
+                  value={formData.projectsShipped || ''}
                   onChange={(e) => updateField('projectsShipped', e.target.value === '' ? 0 : parseInt(e.target.value))}
                   className="input-field w-full"
                   placeholder="7"
@@ -179,7 +179,7 @@ const Create = () => {
                 </label>
                 <input
                   type="number"
-                  value={formData.hoursInMeetings}
+                  value={formData.hoursInMeetings || ''}
                   onChange={(e) => updateField('hoursInMeetings', e.target.value === '' ? 0 : parseInt(e.target.value))}
                   className="input-field w-full"
                   placeholder="40"
