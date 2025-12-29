@@ -20,38 +20,60 @@ export const WrapCard = forwardRef<HTMLDivElement, WrapCardProps>(({ data }, ref
 
   const getLanguageIcon = (lang: string) => {
     const icons: Record<string, string> = {
-      'JavaScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-      'TypeScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-      'Python': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
-      'Java': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
-      'Go': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg',
-      'Rust': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg',
-      'C++': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
-      'C#': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg',
-      'Ruby': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg',
-      'PHP': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
-      'Swift': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg',
-      'Kotlin': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg',
+      'JavaScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
+      'TypeScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
+      'Python': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+      'Java': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg',
+      'Go': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg',
+      'Rust': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg',
+      'C++': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg',
+      'C#': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg',
+      'Ruby': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ruby/ruby-original.svg',
+      'PHP': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg',
+      'Swift': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swift/swift-original.svg',
+      'Kotlin': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg',
+      'Scala': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scala/scala-original.svg',
+      'Dart': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg',
+      'R': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/r/r-original.svg',
+      'Perl': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/perl/perl-original.svg',
+      'Lua': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/lua/lua-original.svg',
+      'Elixir': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/elixir/elixir-original.svg',
+      'Haskell': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/haskell/haskell-original.svg',
+      'Clojure': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/clojure/clojure-original.svg',
+      'Objective-C': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/objectivec/objectivec-plain.svg',
+      'Shell': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg',
+      'HTML/CSS': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg',
+      'SQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg',
     };
-    return icons[lang] || 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/devicon/devicon-original.svg';
+    return icons[lang] || 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/devicon/devicon-original.svg';
   };
 
   const getAppIcon = (app: string) => {
     const icons: Record<string, string> = {
-      'VS Code': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',
-      'Slack': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg',
-      'GitHub': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
-      'GitLab': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg',
-      'Jira': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg',
-      'Notion': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/notion/notion-original.svg',
-      'Figma': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg',
-      'Discord': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/discord/discord-original.svg',
-      'Teams': 'https://www.svgrepo.com/show/373952/teams.svg',
-      'Terminal': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg',
-      'Docker': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
-      'Postman': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg',
+      'VS Code': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg',
+      'Slack': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/slack/slack-original.svg',
+      'GitHub': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg',
+      'GitLab': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg',
+      'Jira': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jira/jira-original.svg',
+      'Notion': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/notion/notion-original.svg',
+      'Figma': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg',
+      'Discord': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/discord/discord-original.svg',
+      'Teams': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftteams/microsoftteams-original.svg',
+      'Terminal': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg',
+      'Docker': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg',
+      'Postman': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg',
+      'IntelliJ IDEA': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg',
+      'Linear': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/devicon/devicon-original.svg',
+      'Confluence': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/confluence/confluence-original.svg',
+      'Zoom': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/chrome/chrome-original.svg',
+      'Chrome DevTools': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/chrome/chrome-original.svg',
+      'Kubernetes': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg',
+      'Jenkins': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg',
+      'Trello': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/trello/trello-plain.svg',
+      'Asana': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/trello/trello-plain.svg',
+      'Bitbucket': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bitbucket/bitbucket-original.svg',
     };
-    return icons[app] || 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/devicon/devicon-original.svg';
+    return icons[app] || 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg';
   };
 
   return (
@@ -63,9 +85,12 @@ export const WrapCard = forwardRef<HTMLDivElement, WrapCardProps>(({ data }, ref
       {/* Background Image */}
       {bgImage && (
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-          style={{ 
+          className="absolute inset-0 w-full h-full z-0"
+          style={{
             backgroundImage: `url(${bgImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
           }}
         />
       )}
@@ -154,21 +179,22 @@ export const WrapCard = forwardRef<HTMLDivElement, WrapCardProps>(({ data }, ref
             >
               MOST USED APPS
             </span>
-            <div className="flex justify-center gap-4 items-center">
-              {data.mostUsedApps.slice(0, 3).map((app, i) => (
+            <div className="flex justify-center gap-3 items-center">
+              {data.mostUsedApps.slice(0, 4).map((app, i) => (
                 <motion.div
                   key={app}
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 1 + i * 0.1 }}
                   title={app}
-                  className="w-10 h-10 flex items-center justify-center"
+                  className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-lg p-1.5"
                 >
                   <img 
                     src={getAppIcon(app)} 
                     alt={app}
                     className="w-full h-full object-contain"
-                    style={{ filter: 'brightness(1.2)' }}
+                    style={{ filter: 'brightness(1.2)', mixBlendMode: 'normal' }}
+                    crossOrigin="anonymous"
                   />
                 </motion.div>
               ))}
@@ -181,21 +207,22 @@ export const WrapCard = forwardRef<HTMLDivElement, WrapCardProps>(({ data }, ref
             >
               MOST USED LANGUAGES
             </span>
-            <div className="flex justify-center gap-4 items-center">
-              {data.mostUsedLanguages.slice(0, 3).map((lang, i) => (
+            <div className="flex justify-center gap-3 items-center">
+              {data.mostUsedLanguages.slice(0, 4).map((lang, i) => (
                 <motion.div
                   key={lang}
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 1.2 + i * 0.1 }}
                   title={lang}
-                  className="w-10 h-10 flex items-center justify-center"
+                  className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-lg p-1.5"
                 >
                   <img 
                     src={getLanguageIcon(lang)} 
                     alt={lang}
                     className="w-full h-full object-contain"
-                    style={{ filter: 'brightness(1.2)' }}
+                    style={{ filter: 'brightness(1.2)', mixBlendMode: 'normal' }}
+                    crossOrigin="anonymous"
                   />
                 </motion.div>
               ))}
@@ -205,37 +232,47 @@ export const WrapCard = forwardRef<HTMLDivElement, WrapCardProps>(({ data }, ref
 
         {/* Footer */}
         <motion.div 
-          className="pt-3 flex justify-between items-end flex-shrink-0"
+          className="pt-2 flex-shrink-0 space-y-2"
           style={{ borderTop: `1px solid ${theme.primaryColor}30` }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4 }}
         >
-          <div className="flex items-center gap-2">
-            <Briefcase className="w-4 h-4" style={{ color: theme.primaryColor }} />
-            <div>
-              <p className="font-semibold text-sm" style={{ color: 'hsl(0, 0%, 98%)' }}>{data.role}</p>
-              <p className="text-xs" style={{ color: 'hsl(0, 0%, 60%)' }}>at {data.companyName}</p>
-            </div>
-          </div>
-          <div className="text-right">
-            <div className="flex items-center gap-1 justify-end">
-              <Sparkles className="w-3 h-3" style={{ color: theme.primaryColor }} />
-              <span 
-                className="text-xs uppercase tracking-widest"
-                style={{ color: `${theme.primaryColor}cc` }}
-              >
-                PERSONALITY
-              </span>
-            </div>
-            <p 
-              className="font-display font-bold text-sm uppercase"
-              style={{ 
-                color: theme.primaryColor
-              }}
-            >
-              {data.personality}
+          {/* Developer Name */}
+          <div className="text-center">
+            <p className="font-display font-black text-lg uppercase tracking-wide" style={{ color: theme.primaryColor }}>
+              {data.developerName}
             </p>
+          </div>
+          
+          {/* Role and Theme */}
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-1.5">
+              <Briefcase className="w-3 h-3" style={{ color: theme.primaryColor }} />
+              <div>
+                <p className="font-semibold text-[10px]" style={{ color: 'hsl(0, 0%, 98%)' }}>{data.role}</p>
+                <p className="text-[9px]" style={{ color: 'hsl(0, 0%, 60%)' }}>at {data.companyName}</p>
+              </div>
+            </div>
+            <div className="text-right">
+              <div className="flex items-center gap-1 justify-end mb-0.5">
+                <Sparkles className="w-2.5 h-2.5" style={{ color: theme.primaryColor }} />
+                <span 
+                  className="text-[8px] uppercase tracking-widest"
+                  style={{ color: `${theme.primaryColor}cc` }}
+                >
+                  THEME
+                </span>
+              </div>
+              <p 
+                className="font-display font-bold text-sm uppercase"
+                style={{ 
+                  color: theme.primaryColor
+                }}
+              >
+                {data.personality}
+              </p>
+            </div>
           </div>
         </motion.div>
       </div>

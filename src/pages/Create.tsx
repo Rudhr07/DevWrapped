@@ -46,7 +46,7 @@ const Create = () => {
     const current = formData[field];
     if (current.includes(item)) {
       updateField(field, current.filter(i => i !== item));
-    } else if (current.length < 3) {
+    } else if (current.length < 4) {
       updateField(field, [...current, item]);
     }
   };
@@ -229,7 +229,7 @@ const Create = () => {
 
             <div>
               <label className="text-sm text-muted-foreground mb-2 block">
-                Most Used Languages (select up to 3)
+                Most Used Languages (select up to 4)
               </label>
               <div className="flex flex-wrap gap-2">
                 {languageOptions.map(lang => (
@@ -254,7 +254,7 @@ const Create = () => {
 
             <div>
               <label className="text-sm text-muted-foreground mb-2 block">
-                Most Used Apps (select up to 3)
+                Most Used Apps (select up to 4)
               </label>
               <div className="flex flex-wrap gap-2">
                 {appOptions.map(app => (
@@ -307,6 +307,18 @@ const Create = () => {
               </div>
               <div>
                 <label className="text-sm text-muted-foreground flex items-center gap-2 mb-2">
+                  Developer Name
+                </label>
+                <input
+                  type="text"
+                  value={formData.developerName}
+                  onChange={(e) => updateField('developerName', e.target.value)}
+                  className="input-field w-full"
+                  placeholder="John Doe"
+                />
+              </div>
+              <div>
+                <label className="text-sm text-muted-foreground flex items-center gap-2 mb-2">
                   <Building2 className="w-4 h-4" /> Company Name
                 </label>
                 <input
@@ -320,7 +332,7 @@ const Create = () => {
             </div>
           </motion.section>
 
-          {/* Personality Section */}
+          {/* Theme Section */}
           <motion.section 
             className="card-glass p-6"
             initial={{ opacity: 0, y: 20 }}

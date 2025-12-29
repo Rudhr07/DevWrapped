@@ -13,7 +13,7 @@ export const PersonalitySelector = ({ selected, onSelect }: PersonalitySelectorP
     <div className="space-y-3">
       <label className="text-sm font-medium text-muted-foreground flex items-center gap-2">
         <Sparkles className="w-4 h-4" />
-        Choose Your Personality
+        Choose Your Theme
       </label>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         {personalities.map((p) => {

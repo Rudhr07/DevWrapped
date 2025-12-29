@@ -14,6 +14,7 @@ export interface WrapData {
   periodType: WrapPeriodType;
   year: number;
   month?: number;
+  developerName: string;
   linesOfCode: number;
   commits: number;
   coffeesConsumed: number;
@@ -36,6 +37,7 @@ export const defaultWrapData: WrapData = {
   periodType: 'yearly',
   year: new Date().getFullYear(),
   month: undefined,
+  developerName: 'John Doe',
   linesOfCode: 30000,
   commits: 100,
   coffeesConsumed: 400,
@@ -72,16 +74,20 @@ export const ideOptions = [
 
 export const languageOptions = [
   'JavaScript', 'TypeScript', 'Python', 'Java', 'Go', 'Rust', 
-  'C++', 'C#', 'Ruby', 'PHP', 'Swift', 'Kotlin', 'Scala'
+  'C++', 'C#', 'Ruby', 'PHP', 'Swift', 'Kotlin', 'Scala',
+  'Dart', 'R', 'Perl', 'Lua', 'Elixir', 'Haskell', 'Clojure',
+  'Objective-C', 'Shell', 'HTML/CSS', 'SQL'
 ];
 
 export const appOptions = [
   'VS Code', 'Slack', 'GitHub', 'GitLab', 'Jira', 'Notion', 
-  'Figma', 'Discord', 'Teams', 'Terminal', 'Docker', 'Postman'
+  'Figma', 'Discord', 'Teams', 'Terminal', 'Docker', 'Postman',
+  'IntelliJ IDEA', 'Linear', 'Confluence', 'Zoom', 'Chrome DevTools',
+  'Kubernetes', 'Jenkins', 'Trello', 'Asana', 'Bitbucket'
 ];
 
 export const roleOptions = [
-  'Jr. SDE', 'SDE', 'Sr. SDE', 'Staff Engineer', 'Principal Engineer',
+  'Student', 'Jr. SDE', 'SDE', 'Sr. SDE', 'Staff Engineer', 'Principal Engineer',
   'Tech Lead', 'Engineering Manager', 'Intern', 'Freelancer', 'Founder'
 ];
 

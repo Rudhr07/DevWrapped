@@ -236,6 +236,37 @@ const Landing = () => {
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* Footer */}
+      <footer className="relative z-10 py-8 mt-12 border-t border-primary/20">
+        <div className="container mx-auto px-4">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5 }}
+          >
+            <p className="text-muted-foreground text-sm mb-2">
+              Built with caffeine ☕, debugging sessions 🐛, and questionable life choices 💭
+            </p>
+            <p className="text-foreground font-medium">
+              Crafted by{' '}
+              <a 
+                href="https://www.linkedin.com/in/rudhr-chauhan" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 transition-colors font-semibold"
+              >
+                Rudhr Chauhan
+              </a>
+              {' '}👨‍💻
+            </p>
+            <p className="text-muted-foreground text-xs mt-2">
+              Because developers need their Spotify Style Wrapped too 🎯
+            </p>
+          </motion.div>
+        </div>
+      </footer>
     </div>
   );
 };

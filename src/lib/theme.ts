@@ -20,7 +20,7 @@ export const themeConfigs: Record<Personality, ThemeConfig> = {
     secondaryColor: 'hsl(142, 60%, 35%)',
     gradient: 'linear-gradient(180deg, hsl(220, 20%, 4%) 0%, hsl(220, 30%, 8%) 50%, hsl(142, 20%, 6%) 100%)',
     bgOverlay: 'rgba(0, 0, 0, 0.7)',
-    defaultBgImage: 'https://i.pinimg.com/1200x/f5/5e/36/f55e36bec20fcfbc0fc8aefd2feb6818.jpg',
+    defaultBgImage: '/backgrounds/batman.jpg',
   },
   ironman: {
     name: 'Iron Man',
@@ -28,7 +28,7 @@ export const themeConfigs: Record<Personality, ThemeConfig> = {
     secondaryColor: 'hsl(45, 100%, 50%)',
     gradient: 'linear-gradient(180deg, hsl(15, 30%, 6%) 0%, hsl(30, 40%, 8%) 50%, hsl(45, 30%, 6%) 100%)',
     bgOverlay: 'rgba(20, 5, 0, 0.75)',
-    defaultBgImage: 'https://i.pinimg.com/1200x/51/34/2f/51342f33d033fafe53972b82faad87f2.jpg',
+    defaultBgImage: '/backgrounds/ironman.jpg',
   },
   cyberpunk: {
     name: 'Cyberpunk',
@@ -36,7 +36,7 @@ export const themeConfigs: Record<Personality, ThemeConfig> = {
     secondaryColor: 'hsl(195, 100%, 50%)',
     gradient: 'linear-gradient(180deg, hsl(260, 30%, 5%) 0%, hsl(280, 40%, 8%) 50%, hsl(195, 30%, 6%) 100%)',
     bgOverlay: 'rgba(20, 0, 30, 0.7)',
-    defaultBgImage: 'https://i.pinimg.com/1200x/85/04/2e/85042eed7f1e3e1449b00a3549588a78.jpg',
+    defaultBgImage: '/backgrounds/cyberpunk.jpg',
   },
   minimalist: {
     name: 'Minimalist',
@@ -44,7 +44,7 @@ export const themeConfigs: Record<Personality, ThemeConfig> = {
     secondaryColor: 'hsl(0, 0%, 70%)',
     gradient: 'linear-gradient(180deg, hsl(0, 0%, 5%) 0%, hsl(0, 0%, 10%) 50%, hsl(0, 0%, 5%) 100%)',
     bgOverlay: 'rgba(0, 0, 0, 0.85)',
-    defaultBgImage: 'https://i.pinimg.com/1200x/59/88/71/598871b7e69cf05d08c8cd19291428a6.jpg',
+    defaultBgImage: '/backgrounds/minimalist.jpg',
   },
   hacker: {
     name: 'Hacker',
@@ -52,7 +52,7 @@ export const themeConfigs: Record<Personality, ThemeConfig> = {
     secondaryColor: 'hsl(120, 80%, 30%)',
     gradient: 'linear-gradient(180deg, hsl(120, 50%, 2%) 0%, hsl(120, 40%, 4%) 50%, hsl(120, 30%, 3%) 100%)',
     bgOverlay: 'rgba(0, 10, 0, 0.8)',
-    defaultBgImage: 'https://i.pinimg.com/736x/fc/d1/44/fcd1441160775d3ea60466caa7137385.jpg',
+    defaultBgImage: '/backgrounds/hacker.jpg',
   },
   space: {
     name: 'Space',
@@ -60,7 +60,7 @@ export const themeConfigs: Record<Personality, ThemeConfig> = {
     secondaryColor: 'hsl(260, 80%, 55%)',
     gradient: 'linear-gradient(180deg, hsl(240, 50%, 4%) 0%, hsl(260, 40%, 8%) 50%, hsl(220, 50%, 6%) 100%)',
     bgOverlay: 'rgba(0, 0, 20, 0.7)',
-    defaultBgImage: 'https://i.pinimg.com/1200x/d4/4f/e4/d44fe48c5820fbfb9eaab94f75989cb2.jpg',
+    defaultBgImage: '/backgrounds/space.jpg',
   },
   anime: {
     name: 'Anime',
@@ -68,7 +68,7 @@ export const themeConfigs: Record<Personality, ThemeConfig> = {
     secondaryColor: 'hsl(280, 100%, 60%)',
     gradient: 'linear-gradient(180deg, hsl(320, 40%, 5%) 0%, hsl(280, 35%, 8%) 50%, hsl(330, 40%, 6%) 100%)',
     bgOverlay: 'rgba(20, 0, 15, 0.7)',
-    defaultBgImage: 'https://i.pinimg.com/736x/3b/35/03/3b350343a7acecfa64d34cf2bb9c8abf.jpg',
+    defaultBgImage: '/backgrounds/anime.jpg',
   },
   gta: {
     name: 'GTA',
@@ -76,7 +76,7 @@ export const themeConfigs: Record<Personality, ThemeConfig> = {
     secondaryColor: 'hsl(120, 80%, 45%)',
     gradient: 'linear-gradient(180deg, hsl(30, 30%, 5%) 0%, hsl(20, 35%, 7%) 50%, hsl(30, 30%, 6%) 100%)',
     bgOverlay: 'rgba(15, 10, 5, 0.7)',
-    defaultBgImage: 'https://i.pinimg.com/1200x/a4/8b/13/a48b1369a2f98a24e46698278898a24c.jpg',
+    defaultBgImage: '/backgrounds/gta.jpg',
   },
 };
 
