@@ -15,6 +15,8 @@ const Wrap = () => {
   const [data, setData] = useState<WrapData>(defaultWrapData);
   const [isDownloading, setIsDownloading] = useState(false);
   const [showShareMenu, setShowShareMenu] = useState(false);
+  const [showSharePopup, setShowSharePopup] = useState(false);
+  const [sharePopupData, setSharePopupData] = useState({ platform: '', url: '', copied: false });
 
   useEffect(() => {
     const storedData = sessionStorage.getItem('wrapData');
@@ -74,7 +76,68 @@ const Wrap = () => {
     }
   };
 
-  const handleShare = () => {
+  const handleShare = async () => {
+    if (!wrapRef.current) return;
+    
+    // Check if mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    // Try native share API only on mobile
+    if (isMobile && navigator.share) {
+      try {
+        setIsDownloading(true);
+        
+        const periodStr = data.periodType === 'monthly' && data.month
+          ? `${new Date(data.year, data.month - 1).toLocaleDateString('en-US', { month: 'long' })} ${data.year}`
+          : data.year.toString();
+        
+        const shareText = `Check out my ${periodStr} coding stats! 💻 ${data.linesOfCode} lines of code, ${data.commits} commits, and ${data.coffeesConsumed} coffees consumed!`;
+        
+        // Get the actual dimensions of the element
+        const element = wrapRef.current;
+        const rect = element.getBoundingClientRect();
+        
+        const dataUrl = await toPng(element, {
+          quality: 1,
+          pixelRatio: 2,
+          cacheBust: true,
+          width: rect.width,
+          height: rect.height,
+          style: {
+            transform: 'none',
+            margin: '0',
+          }
+        });
+        
+        // Convert data URL to blob
+        const response = await fetch(dataUrl);
+        const blob = await response.blob();
+        const file = new File([blob], `devwrapped-${periodStr}.png`, { type: 'image/png' });
+        
+        // Check if we can share files
+        if (navigator.canShare?.({ files: [file] })) {
+          await navigator.share({
+            files: [file],
+            title: 'My Dev Wrapped',
+            text: shareText,
+          });
+          
+          toast({
+            title: 'Shared!',
+            description: 'Your wrap has been shared successfully.',
+          });
+          setIsDownloading(false);
+          return;
+        }
+      } catch (error: any) {
+        if (error.name !== 'AbortError') {
+          console.log('Native share failed, showing menu');
+        }
+        setIsDownloading(false);
+      }
+    }
+    
+    // Show custom share menu on desktop or as fallback
     setShowShareMenu(!showShareMenu);
   };
 
@@ -88,7 +151,7 @@ const Wrap = () => {
     const shareText = `Check out my ${periodStr} coding stats! 💻 ${data.linesOfCode} lines of code, ${data.commits} commits, and ${data.coffeesConsumed} coffees consumed!`;
     const shareUrl = window.location.href;
     
-    // For Instagram, LinkedIn, and Facebook - generate and download image, then open platform
+    // For Instagram, LinkedIn, and Facebook - copy image to clipboard and open platform
     if (platform === 'instagram' || platform === 'linkedin' || platform === 'facebook-image') {
       setIsDownloading(true);
       try {
@@ -108,12 +171,24 @@ const Wrap = () => {
           }
         });
         
-        const link = document.createElement('a');
-        link.download = `devwrapped-${periodStr}.png`;
-        link.href = dataUrl;
-        link.click();
+        // Convert data URL to blob
+        const response = await fetch(dataUrl);
+        const blob = await response.blob();
         
-        // Open the respective platform
+        // Try to copy image to clipboard
+        let copiedToClipboard = false;
+        try {
+          await navigator.clipboard.write([
+            new ClipboardItem({
+              'image/png': blob
+            })
+          ]);
+          copiedToClipboard = true;
+        } catch (clipboardError) {
+          console.log('Clipboard copy failed, will download instead');
+        }
+        
+        // Set platform info
         let platformUrl = '';
         let platformName = '';
         
@@ -121,21 +196,33 @@ const Wrap = () => {
           platformUrl = 'https://www.instagram.com/';
           platformName = 'Instagram';
         } else if (platform === 'linkedin') {
-          platformUrl = 'https://www.linkedin.com/feed/';
+          platformUrl = 'https://www.linkedin.com/feed/?shareActive=true';
           platformName = 'LinkedIn';
         } else if (platform === 'facebook-image') {
           platformUrl = 'https://www.facebook.com/';
           platformName = 'Facebook';
         }
         
-        // Open platform in new tab
-        window.open(platformUrl, '_blank');
+        // Handle fallback download if clipboard failed
+        if (!copiedToClipboard) {
+          const blobUrl = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = blobUrl;
+          link.download = `devwrapped-${periodStr}.png`;
+          link.click();
+        }
         
-        toast({
-          title: 'Image Downloaded!',
-          description: `${platformName} is now open. Upload the downloaded image to share your wrap.`,
-          duration: 6000,
-        });
+        // Show popup with instructions
+        setSharePopupData({ platform: platformName, url: platformUrl, copied: copiedToClipboard });
+        setShowSharePopup(true);
+        setShowShareMenu(false);
+        
+        // Open platform after 7 seconds
+        setTimeout(() => {
+          window.open(platformUrl, '_blank');
+          setShowSharePopup(false);
+        }, 7000);
+        
         setShowShareMenu(false);
       } catch (error) {
         toast({
@@ -185,7 +272,7 @@ const Wrap = () => {
 
   return (
     <div className={`min-h-screen hero-gradient ${themeClass}`}>
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-6 md:py-8">
         {/* Header */}
         <motion.div 
           className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 relative z-50"
@@ -308,11 +395,100 @@ const Wrap = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="text-center text-muted-foreground text-sm mt-8"
+          className="text-center text-muted-foreground text-xs md:text-sm mt-6 md:mt-8 px-4"
         >
           Tip: Download and share on Instagram, Twitter, or LinkedIn!
         </motion.p>
       </div>
+
+      {/* Share Instruction Popup */}
+      {showSharePopup && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="bg-gradient-to-br from-background/95 to-background/90 backdrop-blur-lg rounded-2xl p-6 md:p-8 max-w-md w-full border-2 border-primary/50 shadow-2xl"
+          >
+            <div className="text-center space-y-4 md:space-y-6">
+              {/* Success Icon */}
+              <div className="w-16 h-16 md:w-20 md:h-20 mx-auto bg-primary/20 rounded-full flex items-center justify-center">
+                <svg className="w-8 h-8 md:w-10 md:h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              
+              {/* Title */}
+              <div>
+                <h3 className="text-xl md:text-2xl font-bold text-primary mb-2">
+                  {sharePopupData.copied ? '✅ Image Copied!' : '📥 Image Downloaded!'}
+                </h3>
+                <p className="text-base md:text-lg text-muted-foreground">
+                  Opening {sharePopupData.platform} in 7 seconds...
+                </p>
+              </div>
+              
+              {/* Instructions */}
+              <div className="bg-primary/10 rounded-lg p-3 md:p-4 border border-primary/30">
+                <p className="text-sm md:text-base text-foreground font-medium">
+                  {sharePopupData.copied ? (
+                    <>
+                      Click in the post area and press{' '}
+                      <kbd className="px-1.5 md:px-2 py-0.5 md:py-1 bg-background/50 rounded border border-primary/50 font-mono text-xs md:text-sm">
+                        Ctrl+V
+                      </kbd>
+                      {' '}to paste your wrap!
+                    </>
+                  ) : (
+                    'Upload the downloaded image from your downloads folder.'
+                  )}
+                </p>
+              </div>
+              
+              {/* Open Now Button */}
+              <button
+                onClick={() => {
+                  window.open(sharePopupData.url, '_blank');
+                  setShowSharePopup(false);
+                }}
+                className="w-full btn-primary py-2.5 md:py-3 text-base md:text-lg font-semibold"
+              >
+                Open {sharePopupData.platform} Now
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
+      {/* Footer */}
+      <footer className="relative z-10 py-6 md:py-8 mt-8 md:mt-12 border-t border-primary/20">
+        <div className="container mx-auto px-4">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5 }}
+          >
+            <p className="text-muted-foreground text-xs md:text-sm mb-2">
+              Built with caffeine ☕, debugging sessions 🐛, and questionable life choices 💭
+            </p>
+            <p className="text-foreground text-sm md:text-base font-medium">
+              Crafted by{' '}
+              <a 
+                href="https://www.linkedin.com/in/rudhr-chauhan" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 transition-colors font-semibold"
+              >
+                Rudhr Chauhan
+              </a>
+              {' '}👨‍💻
+            </p>
+            <p className="text-muted-foreground text-xs mt-2">
+              Because developers need their Spotify Style Wrapped too 🎯
+            </p>
+          </motion.div>
+        </div>
+      </footer>
     </div>
   );
 };

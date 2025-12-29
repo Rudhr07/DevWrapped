@@ -29,10 +29,10 @@ export const StatItem = ({
       transition={{ duration: 0.6, delay }}
     >
       <div className="flex items-center gap-2 mb-2">
-        <Icon className="w-4 h-4" style={{ color: themeColor, opacity: 0.8, stroke: themeColor }} />
+        <Icon className="w-4 h-4" style={{ color: 'white', opacity: 0.8, stroke: 'white' }} />
         <span 
-          className="text-xs uppercase tracking-widest font-medium"
-          style={{ color: themeColor, opacity: 0.8 }}
+          className="text-xs uppercase tracking-widest font-medium text-white"
+          style={{ opacity: 0.8 }}
         >
           {label}
         </span>

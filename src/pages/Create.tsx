@@ -67,7 +67,7 @@ const Create = () => {
             <ChevronLeft className="w-4 h-4" />
             Back
           </button>
-          <h1 className="font-display text-3xl font-bold text-foreground">
+          <h1 className="font-display text-2xl sm:text-3xl font-bold text-foreground">
             Create Your{' '}
             <span 
               style={{ 
@@ -100,7 +100,7 @@ const Create = () => {
               Your Stats
             </h2>
             
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="text-sm text-muted-foreground flex items-center gap-2 mb-2">
                   <Code2 className="w-4 h-4" /> Lines of Code
@@ -231,13 +231,13 @@ const Create = () => {
               <label className="text-sm text-muted-foreground mb-2 block">
                 Most Used Languages (select up to 4)
               </label>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 md:gap-2">
                 {languageOptions.map(lang => (
                   <button
                     key={lang}
                     type="button"
                     onClick={() => toggleArrayItem('mostUsedLanguages', lang)}
-                    className={`px-3 py-1.5 rounded-lg text-sm transition-all ${
+                    className={`px-2.5 md:px-3 py-1.5 rounded-lg text-xs md:text-sm transition-all ${
                       formData.mostUsedLanguages.includes(lang)
                         ? 'text-primary-foreground'
                         : 'bg-muted/50 text-muted-foreground hover:bg-muted'
@@ -384,6 +384,37 @@ const Create = () => {
           </motion.div>
         </form>
       </div>
+
+      {/* Footer */}
+      <footer className="relative z-10 py-6 md:py-8 mt-8 md:mt-12 border-t border-primary/20">
+        <div className="container mx-auto px-4">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5 }}
+          >
+            <p className="text-muted-foreground text-xs md:text-sm mb-2">
+              Built with caffeine ☕, debugging sessions 🐛, and questionable life choices 💭
+            </p>
+            <p className="text-foreground text-sm md:text-base font-medium">
+              Crafted by{' '}
+              <a 
+                href="https://www.linkedin.com/in/rudhr-chauhan" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 transition-colors font-semibold"
+              >
+                Rudhr Chauhan
+              </a>
+              {' '}👨‍💻
+            </p>
+            <p className="text-muted-foreground text-xs mt-2">
+              Because developers need their Spotify Style Wrapped too 🎯
+            </p>
+          </motion.div>
+        </div>
+      </footer>
     </div>
   );
 };

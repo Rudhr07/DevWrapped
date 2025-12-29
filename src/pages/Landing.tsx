@@ -78,7 +78,7 @@ const Landing = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="font-display text-4xl md:text-7xl font-black text-center mb-4"
+          className="font-display text-3xl sm:text-5xl md:text-7xl font-black text-center mb-4 px-4"
         >
           <span className="text-foreground">SOFTWARE ENGINEER</span>
           <br />
@@ -89,7 +89,7 @@ const Landing = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-muted-foreground text-lg md:text-xl text-center max-w-2xl mb-12"
+          className="text-muted-foreground text-base md:text-xl text-center max-w-2xl mb-8 md:mb-12 px-4"
         >
           Celebrate your coding journey. Visualize your commits, coffees, and conquests 
           in a stunning, shareable wrap.
@@ -103,11 +103,11 @@ const Landing = () => {
         >
           <button
             onClick={() => setShowPeriodDialog(true)}
-            className="btn-primary group inline-flex items-center gap-3 text-lg"
+            className="btn-primary group inline-flex items-center gap-2 md:gap-3 text-base md:text-lg px-6 md:px-8"
           >
-            <Zap className="w-5 h-5" />
+            <Zap className="w-4 h-4 md:w-5 md:h-5" />
             Create Your Wrap
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </motion.div>
 
@@ -116,7 +116,7 @@ const Landing = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl"
+          className="mt-12 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-4xl w-full px-4"
         >
           {[
             {
@@ -238,7 +238,7 @@ const Landing = () => {
       </Dialog>
 
       {/* Footer */}
-      <footer className="relative z-10 py-8 mt-12 border-t border-primary/20">
+      <footer className="relative z-10 py-6 md:py-8 mt-8 md:mt-12 border-t border-primary/20">
         <div className="container mx-auto px-4">
           <motion.div 
             className="text-center"
@@ -246,10 +246,10 @@ const Landing = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5 }}
           >
-            <p className="text-muted-foreground text-sm mb-2">
+            <p className="text-muted-foreground text-xs md:text-sm mb-2">
               Built with caffeine ☕, debugging sessions 🐛, and questionable life choices 💭
             </p>
-            <p className="text-foreground font-medium">
+            <p className="text-foreground text-sm md:text-base font-medium">
               Crafted by{' '}
               <a 
                 href="https://www.linkedin.com/in/rudhr-chauhan" 
